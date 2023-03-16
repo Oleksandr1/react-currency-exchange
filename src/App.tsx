@@ -1,8 +1,35 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './App.css'
+import { Header } from './components/Header'
+import { ExchangeForm } from './components/currency/ExchangeForm'
+import { Footer } from './components/Footer'
+import {ExchangeContext} from "./context/exchangeContext";
+import {Spinner} from "./components/Spinner";
+import {ErrorMessage} from "./components/ErrorMessage";
+
 
 function App() {
-    return <h1 className='m-4 font-bold'>Currency exchange</h1>
+    const { loading, error } = useContext(ExchangeContext)
+    return (
+        <>
+            {loading &&
+            <Spinner />
+            }
+            {error &&
+                <ErrorMessage message={error}/>
+            }
+                <Header />
+                <div
+                    className={
+                        'container bg-gray-200 mx-auto h-[75vh] flex justify-center items-center'
+                    }
+                >
+                    <ExchangeForm />
+                </div>
+                <Footer />
+
+        </>
+    )
 }
 
 export default App

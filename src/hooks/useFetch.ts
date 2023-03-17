@@ -1,5 +1,6 @@
 import { iRate } from '../models/iRate'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 export function UseRates() {
     const [rates, setRates] = useState<iRate[]>([])
@@ -10,12 +11,18 @@ export function UseRates() {
         try {
             setLoading(true)
             setError('')
-            const response = await fetch(
-                `https://api.privatbank.ua/p24api/exchange_rates?json&date=${getFormattedToday()}`
+            const response = await axios.get(
+                `https://cors-anywhere.herokuapp.com/https://api.privatbank.ua/p24api/exchange_rates?json&date=${getFormattedToday()}`,
+                {
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET',
+                    },
+                }
             )
-            if(response.status === 200){
-                const rates = await response.json()
-                setRates(rates.exchangeRate)
+
+            if (response.status === 200) {
+                setRates(response.data.exchangeRate)
             } else {
                 setError('Wrong request')
             }

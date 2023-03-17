@@ -17,7 +17,7 @@ export function ExchangeForm() {
         <>
             <div
                 className={
-                    'bg-white w-full md:w-4/6 mx-auto mt-3 py-20 px-3 '
+                    'bg-white md:w-4/6 mx-auto mt-3 py-5 px-3 '
                 }
             >
                 <div className="flex lg:flex-row flex-col justify-between items-center">

@@ -21,7 +21,7 @@ function App() {
                 <Header />
                 <div
                     className={
-                        'container bg-gray-200 mx-auto h-[75vh] flex justify-center items-center'
+                        'container bg-gray-200 mx-auto h-auto py-5 flex justify-center items-center'
                     }
                 >
                     <ExchangeForm />

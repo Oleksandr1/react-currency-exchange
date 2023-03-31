@@ -12,11 +12,15 @@ export function UseRates() {
             setLoading(true)
             setError('')
             const response = await axios.get(
-                `https://cors-anywhere.herokuapp.com/https://api.privatbank.ua/p24api/exchange_rates?json&date=${getFormattedToday()}`,
+                `https://api.allorigins.win/raw?url=https://api.privatbank.ua/p24api/exchange_rates?json&date=31.03.2023`,
+                // `https://api.allorigins.win/raw?url=https://api.privatbank.ua/p24api/exchange_rates?json&date=${getFormattedToday()}`,
                 {
                     headers: {
                         'Access-Control-Allow-Origin': '*',
                         'Access-Control-Allow-Methods': 'GET',
+                        'Access-Control-Request-Method': 'GET, OPTIONS',
+                        // 'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers'
+
                     },
                 }
             )
@@ -40,9 +44,9 @@ export function UseRates() {
     return { rates, loading, error }
 }
 
-function getFormattedToday() {
-    return new Date(Date.now())
-        .toLocaleString()
-        .split(',')[0]
-        .replaceAll('/', '.')
-}
+// function getFormattedToday() {
+//     return new Date(Date.now())
+//         .toLocaleString()
+//         .split(',')[0]
+//         .replaceAll('/', '.')
+// }

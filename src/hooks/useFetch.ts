@@ -17,10 +17,9 @@ export function UseRates() {
                 {
                     headers: {
                         'Access-Control-Allow-Origin': '*',
-                        'Access-Control-Allow-Methods': 'GET',
+                        'Access-Control-Allow-Methods': 'GET, OPTIONS',
                         'Access-Control-Request-Method': 'GET, OPTIONS',
-                        // 'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers'
-
+                        'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers'
                     },
                 }
             )
